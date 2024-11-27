@@ -19,7 +19,7 @@
       <!-- Breadcrumb NavXTで出力される部分 ここから -->
       <span>
         <a href="index.html">
-          <span>TOP</span>
+          <span>TOPtop</span>
         </a>
       </span>
       &nbsp;&gt;&nbsp;

@@ -1,0 +1,72 @@
+@use "global" as *;
+
+.voice {}
+
+.voice::before {
+  background-image: url('../images/common/voice3.1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  display: none;
+  height: rem(138);
+  max-width: rem(301);
+  width: 100%;
+  top: rem(-111);
+  left: calc(46.3% - min(44vw, 35.5rem));
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.voice::after {
+  background-image: url('../images/common/Voice4.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  display: none;
+  height: rem(162);
+  max-width: rem(71);
+  width: 100%;
+  bottom: rem(-71.4);
+  right: calc(56.7% - min(48vw, 40rem));
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.voice__inner {
+  position: relative;
+
+  @include mq(sm) {
+    max-width: rem(600);
+    width:  100%;
+  }
+}
+
+.voice__button {
+  margin-top: rem(40);
+  text-align: center;
+
+  @include mq(md) {
+    margin-top: rem(80);
+  }
+}
+
+// Modifier
+.voice.voice--sub::before {
+  top: rem(-143);
+}
+
+.voice.voice--sub::after {
+  display: none;
+}

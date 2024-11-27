@@ -1,0 +1,206 @@
+@use "global" as *;
+
+body {
+}
+
+.header {
+  height: rem(80);
+  background-color: rgba(13 36 54 / 68%);
+
+  @include mq(md) {
+    height: rem(90);
+  }
+}
+
+.header-green {
+  background: $green;
+}
+
+.header__inner {
+  height: inherit;
+  display: flex;
+  padding-left: rem(16);
+  padding-right: rem(37.6);
+
+  @include mq(md) {
+    padding-left: rem(40);
+    padding-right: rem(40);
+  }
+}
+
+.header__logo {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  width: rem(102);
+  z-index: 9999;
+
+  @include mq(md) {
+    width: rem(133);
+    margin-right: auto;
+  }
+}
+
+.header__logo a {
+  height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  transition: .3s;
+}
+
+.header__logo img:hover {
+  opacity: .7;
+}
+
+.header__nav {
+  height: inherit;
+}
+
+.header__nav-items {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  gap: rem(40);
+}
+
+.header__nav-list li a {
+  position: relative;
+}
+
+.header__nav-list li.current a,
+.header__nav-list li a:hover {
+  color: $white;
+}
+
+.header__nav-list li a::after {
+    content: '';
+    position: absolute;
+    bottom: rem(15);
+    left: 10%;
+    width: 80%;
+    height: rem(2);
+    background: $white;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: center top;
+}
+
+.header__nav-list li.current a::after,
+.header__nav-list li a:hover::after {
+  transform: scale(1, 1);
+}
+
+
+.header__nav-item {
+  height: inherit;
+  display: inline-block;
+  position: relative;
+  transition: .3s;
+}
+
+.header__nav-item:hover {
+  opacity: .7;
+}
+
+.header__nav-item::after {
+  position: absolute;
+  content: '';
+  bottom: rem(15);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: $white;
+  transition: all .3s ease 0s;
+}
+
+.header__nav-item:hover::after {
+  width:  100%;
+}
+
+.header__nav-item a {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  font-family: $english-font-family;
+  font-weight: $regular;
+  
+  @include mq(md) {
+    font-size: rem(18);
+  }
+}
+
+.header__nav-item a span {
+  color: $white;
+  font-family: $base-font-family;
+  font-weight: $regular;
+  @include mq(md) {
+    font-size: rem(10);
+  }
+}
+
+.header__hamburger {
+  position: fixed;
+  z-index: 9999;
+  top: rem(31.6);
+  right: rem(16);
+  cursor: pointer;
+  width: rem(33);
+  height: rem(16);
+}
+
+.header__hamburger span {
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: rem(0.4);
+  background-color: $white;
+  transition: transform 0.3s;
+}
+
+.header__hamburger span:nth-child(1) {
+  top: rem(-3.2);
+}
+
+.header__hamburger span:nth-child(2) {
+  top: rem(8.4);
+  transition: opacity 0.3s;
+}
+
+.header__hamburger span:nth-child(3) {
+  top: rem(20);
+}
+
+.header__hamburger.is-active__hamburger span:nth-child(1) {
+  -webkit-transform: translateY(18px) rotate(37deg);
+  transform: translateY(18px) rotate(37deg);
+}
+
+.header__hamburger.is-active__hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.header__hamburger.is-active__hamburger span:nth-child(3) {
+  -webkit-transform: translateY(-5px) rotate(-38deg);
+  transform: translateY(-5px) rotate(-38deg);
+}
+
+.header__drawer-menu {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: none;
+  width:  100%;
+  height: 100vh;
+  background-color: $green;
+  padding-top: rem(64.4);
+  padding-bottom: rem(18);
+}

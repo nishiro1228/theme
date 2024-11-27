@@ -1,0 +1,59 @@
+@use "global" as *;
+
+.swiper {
+  padding-bottom: rem(10);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+}
+
+/* 矢印を消して画像に変更する */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+}
+/* 前に戻る矢印の画像パス */
+.swiper-button-prev {
+  background-image: url(/assets/images/common/prev.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* 次に進む矢印の画像パス */
+.swiper-button-next {
+  background-image: url(/assets/images/common/next.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.swiper-button-next {
+}
+
+.swiper-android .swiper-slide, .swiper-ios .swiper-slide, .swiper-wrapper {}
+
+.swiper-wrapper  {}
+
+.swiper-backface-hidden .swiper-slide {
+  height: auto;
+}
+
+.swiper-fade .swiper-slide-active  {
+  height: inherit;
+}
+
+.swiper-horizontal {
+  padding-bottom: rem(10);
+}
+
+.swiper-button-prev.js-campaign-arrow {
+  width: 5rem;
+  height: 5rem;
+}
+
+.swiper-button-next.js-campaign-arrow {
+  width: 5rem;
+  height: 5rem;
+}

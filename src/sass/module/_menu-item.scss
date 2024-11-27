@@ -1,0 +1,51 @@
+@use "global" as *;
+
+.menu-item__title {
+  margin-top: rem(24);
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $regular;
+  line-height: calc(18/16);
+  color: $white;
+  display: block;
+  transition: .3s;
+}
+
+.menu-item__title:hover {
+  opacity: .7;
+}
+
+a:first-of-type.menu-item__title {
+  margin-top: 0;
+}
+
+.menu-item__title.menu-item__title--bold {
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $bold;
+  line-height: calc(18/16);
+  margin-top: rem(40);
+  position: relative;
+  display: block;
+}
+
+.menu-item__title.menu-item__title--bold::before {
+  content: "";
+  display: inline-block;
+  width: rem(18);
+  height: rem(18);
+  background-image: url(https://raw.githubusercontent.com/nishiro1228/CodeUps-/a7bf89b22a456336e8bf7e839bc3dac26a3efdbb/src/images/common/text-icon.svg);
+  background-size: contain;
+  vertical-align: middle;
+  position: absolute;
+  left: rem(-25);
+  top: 0;
+}
+
+.menu-item__title.menu-item__title--bold.menu-item__title--black::before {
+  background-image: url('../images/common/_ヒトデblack.webp');
+}
+
+.menu-item__title.menu-item__title--black {
+  color: $black;
+}

@@ -1,0 +1,39 @@
+@use "global" as *;
+
+.voice-cards {
+  display: grid;
+  gap: rem(40);
+  grid-template-columns: repeat(1, 1fr);
+
+  @include mq(md) {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.voice__cards {
+  margin-top: rem(41.6);
+  
+  @include mq(md) {
+    margin-top: rem(30);
+  }
+}
+
+.voice-cards__item {
+  background-color: $white;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+  padding: rem(24) rem(16);
+
+  @include mq(md) {
+    padding: rem(24);
+  }
+}
+
+// Modifier
+.voice-cards.voice-cards--sub {
+  gap: rem(40);
+
+  @include mq(md) {
+    gap: rem(80) rem(40);
+  }
+}

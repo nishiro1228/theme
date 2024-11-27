@@ -1,0 +1,24 @@
+@use "global" as *;
+
+.sub-mv {
+  height: rem(460);
+
+  @include mq(md) {
+    height: rem(548);
+  }
+}
+
+.sub-mv__inner {
+  height: inherit;
+  position: relative;
+  width:  100%;
+}
+
+.sub-mv__img {
+  height: inherit;
+}
+
+.sub-mv__img img {
+  height: inherit;
+  object-fit: cover;
+}

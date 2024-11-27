@@ -1,0 +1,212 @@
+@use "global" as *;
+
+.card {
+  display: block;
+}
+
+.card__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card a {
+  height: 100%;
+  display: block;
+}
+
+.card a:hover {
+  opacity: 1;
+}
+
+.card__img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.card__img img {
+  width: 100%;
+  aspect-ratio: 333/223;
+  object-fit: cover;
+  transition: .6s;
+}
+
+.card:hover .card__img img {
+  transform: scale(1.2);
+}
+
+.card__text {
+  margin-top: rem(15);
+  font-size: rem(15);
+  line-height: 1;
+  @include mq(md){
+      font-size: rem(20);
+  }
+}
+
+.card__wrap {
+  display: flex;
+  flex-direction:column;
+  flex-grow: 1;
+  margin-top: rem(-1.2);
+  padding: rem(18) rem(16) rem(24) rem(16);
+
+  @include mq(md) {
+    padding: rem(25.6) rem(16) rem(40) rem(16);
+  }
+}
+
+.card__meta {
+  flex-grow: 1;
+  border-bottom: 1px solid $green;
+}
+
+.card__category {
+  display: inline-block;
+  padding: rem(2.8) rem(11.2);
+  border: 1px solid $green;
+  font-size: rem(12);
+  line-height: calc( 22/ 12);
+  font-family: $base-font-family;
+  font-weight: $regular;
+  color: $green;
+
+  @include mq(md) {
+    padding: rem(6) rem(16);
+  }
+}
+
+.card__title {
+  font-size: rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+  padding-bottom: 0;
+
+  @include mq(md) {
+    margin-top: rem(5);
+  }
+}
+
+.card__text {
+  text-align: center;
+  font-size: rem(16);
+  line-height: calc( 24/ 16);
+  margin-top: rem(8);
+
+  @include mq(md) {
+    font-size: rem(16);
+    line-height: calc( 24/ 16);
+    margin-top: rem(16);
+  }
+}
+
+.card__body {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(8);
+  align-items: flex-end;
+}
+
+.card__price1 {
+  text-decoration: line-through 3px $red;
+  font-size: rem(20);
+  font-family: $english2-font-family;
+  font-weight: $bold;
+  line-height: 1;
+  display: flex;
+  align-items: flex-end;
+
+  @include mq(md) {
+    font-size: rem(24);
+  }
+}
+
+.card__price2 {
+  font-size: rem(32);
+  font-family: $english2-font-family;
+  font-weight: $bold;
+  line-height: 1;
+  color: $green;
+  margin-left: rem(16);
+
+  @include mq(md) {
+    font-size: rem(36.8);
+    margin-left: rem(32);
+  }
+}
+
+.card__sub-text {
+  margin-top: rem(24);
+}
+
+.card__time {
+  font-size:  rem(16);
+  font-weight: $bold;
+  font-family: $english2-font-family;
+  line-height: calc( 18/ 16);
+  margin-top: rem(32);
+  color: $green;
+  text-align: center;
+}
+
+.card__contact {
+  font-size:  rem(14);
+  font-weight: $regular;
+  font-family: $base-font-family;
+  line-height: calc( 18/ 14);
+  margin-top: rem(7);
+  color: $green;
+  text-align: center;
+}
+
+.card__head {
+  width: 50%;
+  border-bottom: 1px solid $green;
+
+  @include mq(md) {
+    max-width: rem(276);
+    width:  100%;
+  }
+}
+
+// Modifier
+.card__img.card__img--blog img {
+  aspect-ratio: 301/201;
+  object-fit: cover;
+  height: auto;
+}
+
+.card__title.card__title--large {
+  font-size:  rem(16);
+  font-family: $base-font-family;
+  font-weight: $medium;
+
+  @include mq(md) {
+    font-size:  rem(24);
+  }
+}
+
+.card__title.card__title--center {
+  text-align: center;
+}
+
+.card__text.card__text--campaign {
+  margin-top: rem(24);
+}
+
+.card__img.card__img--small img {
+  width: 100%;
+  aspect-ratio: 294/188;
+  object-fit: cover;
+  transition: .6s;
+}
+
+.card__wrap.card__wrap--small {
+  padding: rem(9.6) rem(16) rem(24) rem(16);
+}
+
+
+.card__container {
+  display: flex;
+  flex-direction: column;
+}

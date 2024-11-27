@@ -1,0 +1,52 @@
+@use "global" as *;
+
+.sub-campaign {
+  position: relative;
+}
+
+.sub-campaign::before {
+  background-image: url(../images/common/voice3.1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  height: rem(55);
+  left: calc(46.5% - min(42vw, 35.5rem));
+  max-width: rem(120);
+  position: absolute;
+  top: -9.3375rem;
+  width: 100%;
+  z-index: -1;
+  display: block;
+
+  @include mq(md) {
+    max-width: 18.8125rem;
+    height: 8.625rem;
+    top: -8.7375rem;
+    left: calc(46.5% - min(44vw, 35.5rem));
+  }
+}
+
+.sub-layout-campaign {
+
+}
+
+.sub-campaign__inner {
+
+}
+
+.sub-campaign__container {
+  padding-bottom: rem(15);
+}
+
+.sub-campaign__cards {
+  width:  100%;
+  display: grid;
+  gap: rem(33.6);
+  grid-template-columns: repeat(1, 1fr);
+
+  @include mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(80) rem(40);
+  }
+}

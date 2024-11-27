@@ -1,0 +1,46 @@
+@use "global" as *;
+
+.tab__menu {
+  display: grid;
+  gap: rem(16) rem(21);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mq(md) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: rem(32);
+  }
+}
+
+.tab__menu-item {
+  padding: rem(8) rem(27);
+  max-width: rem(162);
+  min-width: rem(162);
+  height: rem(34);
+  width: fit-content;
+  font-size: rem(14);
+  font-weight: $regular;
+  font-family: $base-font-family;
+  line-height: 1;
+  color: $green;
+  border: 1px solid $green;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  flex: 1 1 100%;
+  white-space: nowrap;
+  transition: .3s;
+
+  @include mq(md) {
+    flex: initial;
+  }
+}
+
+.tab__menu-item:hover {
+  color: $white;
+  background-color: $green;
+}
+
+.tab__menu-item.is-active__tab {
+  color: #fff;
+  background-color: $green;
+}

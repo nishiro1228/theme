@@ -1,0 +1,65 @@
+@use "global" as *;
+
+.menu-list {
+  display: grid;
+  gap: rem(16);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mq(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.menu-list__item {
+  padding-left: rem(21.8);
+}
+
+.menu-list__item:nth-child(2) {
+  order: 2;
+  margin-top: rem(26);
+
+  @include mq(md) {
+    order: initial;
+    margin-top: 0;
+    margin-left: rem(14.5);
+  }
+}
+
+.menu-list__item:nth-child(3) {
+  order: 1;
+
+  @include mq(md) {
+    order: initial;
+    margin-left: rem(9);
+  }
+}
+
+.menu-list__item:nth-child(4) {
+  order: 3;
+  margin-top: rem(26);
+
+
+  @include mq(md) {
+    order: initial;
+    margin-top: 0;
+    margin-left: rem(5);
+  }
+}
+
+.menu-list__item.menu-list__item--sitemap:nth-child(2) {
+  @include mq(md) {
+    margin-left: rem(32);
+  }
+}
+
+.menu-list__item.menu-list__item--sitemap:nth-child(3) {
+  @include mq(md) {
+    margin-left: rem(73);
+  }
+}
+
+.menu-list__item.menu-list__item--sitemap:nth-child(4) {
+  @include mq(md) {
+    margin-left: rem(85);
+  }
+}

@@ -14,21 +14,7 @@
   </section>
 
   <!-- パンくずリスト -->
-  <div class="breadcrumb layout-breadcrumb">
-    <div class="breadcrumb__inner inner">
-      <!-- Breadcrumb NavXTで出力される部分 ここから -->
-      <span>
-        <a href="index.html">
-          <span>TOP</span>
-        </a>
-      </span>
-      &nbsp;&gt;&nbsp;
-      <span>
-        <span class="breadcrumb__item">よくある質問</span>
-      </span>
-      <!-- Breadcrumb NavXTで出力される部分 ここまで -->
-    </div>
-  </div>
+  <?php get_template_part('parts/breadcrumb') ?>
 
 
   <!-- faq -->

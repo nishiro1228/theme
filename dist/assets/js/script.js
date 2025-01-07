@@ -103,6 +103,28 @@ jQuery(function ($) {
       $('#' + number).addClass('is-active__tab');
     });
   });
+  document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.querySelectorAll('.js-tab-menu');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // 選択状態の更新
+        tabs.forEach(function (t) {
+          return t.classList.remove('is-active__tab');
+        });
+        this.classList.add('is-active__tab');
+
+        // コンテンツ更新
+        var slug = this.querySelector('a').getAttribute('data-number');
+        fetch("?tab_category=".concat(slug)).then(function (response) {
+          return response.text();
+        }).then(function (html) {
+          document.querySelector('.tab-content').innerHTML = html;
+        });
+      });
+    });
+  });
 
   //   Informationタブ
   $(document).ready(function () {

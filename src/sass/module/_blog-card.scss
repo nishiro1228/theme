@@ -29,7 +29,9 @@
   padding: rem(17.6) 0 0 0;
 }
 
-.blog-card__dete {
+.blog-card__wrap {}
+
+.blog-card__date {
   font-size: rem(12);
   font-family: $english-font-family;
   font-weight: $regular;
@@ -39,6 +41,8 @@
 
 .blog-card__title {
   border-bottom: 1px solid $green;
+  font-size: rem(16);
+  font-weight: $medium;
 }
 
 .blog-card__text {

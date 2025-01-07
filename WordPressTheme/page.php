@@ -26,25 +26,7 @@
   </section>
 
   <!-- パンくずリスト -->
-  <div class="breadcrumb layout-breadcrumb">
-    <div class="breadcrumb__inner inner">
-      <span>
-        <a href="index.html">
-          <span>TOP</span>
-        </a>
-      </span>
-      &nbsp;&gt;&nbsp;
-      <span>
-        <span class="breadcrumb__item">
-          <?php if (is_page('privacypolicy')) : ?>
-          プライバシーポリシー
-          <?php elseif (is_page('terms-of-service')) : ?>
-          利用規約
-          <?php endif; ?>
-        </span>
-      </span>
-    </div>
-  </div>
+  <?php get_template_part('parts/breadcrumb') ?>
 
   <!-- コンテンツ -->
   <div class="privacy-policy layout-privacy-policy">

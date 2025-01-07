@@ -311,8 +311,10 @@
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/Blog1.jpg" alt="サンゴ礁">
             </div>
             <div class="blog-card__wrap">
-              <time class="blog-card__dete" datetime="2023-11-17">2023.11/17</time>
-              <p class="blog-card__title">ライセンス取得</p>
+              <div class="blog-card__meta">
+                <time class="blog-card__dete" datetime="2023-11-17">2023.11/17</time>
+                <p class="blog-card__title">ライセンス取得</p>
+              </div>
               <p class="blog-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
                 ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
             </div>
@@ -324,8 +326,10 @@
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/Blog2.jpg" alt="ウミガメが泳いでいる様子">
             </div>
             <div class="blog-card__wrap">
-              <time class="blog-card__dete" datetime="2023-11-17">2023.11/17</time>
-              <p class="blog-card__title">ウミガメと泳ぐ</p>
+              <div class="blog-card__meta">
+                <time class="blog-card__dete" datetime="2023-11-17">2023.11/17</time>
+                <p class="blog-card__title">ウミガメと泳ぐ</p>
+              </div>
               <p class="blog-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
                 ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
             </div>
@@ -338,8 +342,10 @@
                 alt="カクレクマノミがイソギンチャクから顔を出している様子">
             </div>
             <div class="blog-card__wrap">
-              <time class="blog-card__dete" datetime="2023-11-17">2023.11/17</time>
-              <p class="blog-card__title">カクレクマノミ</p>
+              <div class="blog-card__meta">
+                <time class="blog-card__dete" datetime="2023-11-17">2023.11/17</time>
+                <p class="blog-card__title">カクレクマノミ</p>
+              </div>
               <p class="blog-card__text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
                 ここにテキストが入ります。ここにテキストが入ります。ここにテキスト</p>
             </div>
@@ -479,7 +485,8 @@
         </ul>
         <div class="price__colorbox colorbox">
           <picture class="price__container-img">
-            <source srcset="./assets/images/common/Price1.jpg" media="(min-width: 767px)" />
+            <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/Price1.jpg"
+              media="(min-width: 767px)" />
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/Price-sp.jpg" alt="ウミガメが泳いでいる様子">
           </picture>
         </div>

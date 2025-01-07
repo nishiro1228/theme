@@ -4,6 +4,11 @@
   padding-bottom: rem(10);
 }
 
+.swiper-slide {
+  height: initial;
+  display: flex;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
 }
@@ -18,13 +23,13 @@
 }
 /* 前に戻る矢印の画像パス */
 .swiper-button-prev {
-  background-image: url(/assets/images/common/prev.svg);
+  background-image: url(../images/common/prev.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
 /* 次に進む矢印の画像パス */
 .swiper-button-next {
-  background-image: url(/assets/images/common/next.svg);
+  background-image: url(../images/common/next.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -57,3 +62,4 @@
   width: 5rem;
   height: 5rem;
 }
+

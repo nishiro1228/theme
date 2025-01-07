@@ -1,21 +1,12 @@
 <?php get_header(); ?>
+<style>
+body.customize-support {
+  background-color: #408f95;
+}
+</style>
 <main>
   <!-- パンくずリスト -->
-  <div class="breadcrumb layout-breadcrumb layout-breadcrumb--error-404">
-    <div class="breadcrumb__inner inner">
-      <!-- Breadcrumb NavXTで出力される部分 ここから -->
-      <span>
-        <a href="index.html">
-          <span>TOP</span>
-        </a>
-      </span>
-      &nbsp;&gt;&nbsp;
-      <span>
-        <span class="breadcrumb__item">404</span>
-      </span>
-      <!-- Breadcrumb NavXTで出力される部分 ここまで -->
-    </div>
-  </div>
+  <?php get_template_part('parts/breadcrumb') ?>
 
   <!-- error-404 -->
   <div class="error-404 layout-error-404">

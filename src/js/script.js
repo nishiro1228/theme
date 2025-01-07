@@ -96,6 +96,28 @@ function checkDrawerHeight() {
       });
   });
 
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.js-tab-menu');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // 選択状態の更新
+            tabs.forEach(t => t.classList.remove('is-active__tab'));
+            this.classList.add('is-active__tab');
+
+            // コンテンツ更新
+            const slug = this.querySelector('a').getAttribute('data-number');
+            fetch(`?tab_category=${slug}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.tab-content').innerHTML = html;
+                });
+        });
+    });
+});
+
+
 //   Informationタブ
 $(document).ready(function () {
     // タブのボタンとコンテンツを取得

@@ -14,21 +14,7 @@
   </section>
 
   <!-- パンくずリスト -->
-  <div class="breadcrumb layout-breadcrumb">
-    <div class="breadcrumb__inner inner">
-      <!-- Breadcrumb NavXTで出力される部分 ここから -->
-      <span>
-        <a href="index.html">
-          <span>TOP</span>
-        </a>
-      </span>
-      &nbsp;&gt;&nbsp;
-      <span>
-        <span class="breadcrumb__item">私たちについて</span>
-      </span>
-      <!-- Breadcrumb NavXTで出力される部分 ここまで -->
-    </div>
-  </div>
+  <?php get_template_part('parts/breadcrumb') ?>
 
   <!-- about -->
   <section class="sub-about sub-layout-about">
@@ -64,80 +50,33 @@
         <h2 class="section-title__sub">フォト</h2>
       </div>
       <ul class="gallery__list gallery-list">
+        <?php
+      // SCFでギャラリー画像を取得
+      $gallery_images = SCF::get('gallery_images'); // 繰り返しフィールドの名前
+      if (!empty($gallery_images)) :
+        foreach ($gallery_images as $index => $gallery_image) :
+          $image_url = wp_get_attachment_image_url($gallery_image['about-image'], 'full'); // 画像URL取得
+          $alt_text = $gallery_image['about-alt_text']; // alt属性取得
+      ?>
         <li class="gallery-list__item">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery1.webp"
-            alt="無数のオレンジ色の小魚が海の中を泳いでいる様子" class="js-modal-open" data-target="1">
-          <div class="gallery-list__modal modal js-modal" id="1">
+          <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($alt_text); ?>" class="js-modal-open"
+            data-target="<?php echo $index + 1; ?>">
+          <div class="gallery-list__modal modal js-modal" id="<?php echo $index + 1; ?>">
             <div class="modal__inner">
               <div class="modal__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery1.webp"
-                  alt="無数のオレンジ色の小魚が海の中を泳いでいる様子">
+                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($alt_text); ?>">
               </div>
             </div>
           </div>
         </li>
-        <li class="gallery-list__item">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery2.webp" alt="澄んだ海と青空と船"
-            class="js-modal-open" data-target="2">
-          <div class="gallery-list__modal modal js-modal" id="2">
-            <div class="modal__inner">
-              <div class="modal__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery2.webp" alt="澄んだ海と青空と船">
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="gallery-list__item">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.webp" alt="二匹の青い魚が海の中を泳いでいる様子"
-            class="js-modal-open" data-target="3">
-          <div class="gallery-list__modal modal js-modal" id="3">
-            <div class="modal__inner">
-              <div class="modal__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.webp"
-                  alt="二匹の青い魚が海の中を泳いでいる様子">
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="gallery-list__item">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery4.webp" alt="黄色い魚が海の中を泳いでいる様子"
-            class="js-modal-open" data-target="4">
-          <div class="gallery-list__modal modal js-modal" id="4">
-            <div class="modal__inner">
-              <div class="modal__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery4.webp"
-                  alt="黄色い魚が海の中を泳いでいる様子">
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="gallery-list__item">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.webp" alt="無数の小魚が海の中を泳いでいる様子"
-            class="js-modal-open" data-target="5">
-          <div class="gallery-list__modal modal js-modal" id="5">
-            <div class="modal__inner">
-              <div class="modal__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.webp"
-                  alt="無数の小魚が海の中を泳いでいる様子">
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="gallery-list__item">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery6.webp" alt="黄色い魚が海の中を泳いでいる様子"
-            class="js-modal-open" data-target="6">
-          <div class="gallery-list__modal modal js-modal" id="6">
-            <div class="modal__inner">
-              <div class="modal__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery6.webp"
-                  alt="黄色い魚が海の中を泳いでいる様子">
-              </div>
-            </div>
-          </div>
-        </li>
+        <?php
+        endforeach;
+      endif;
+      ?>
       </ul>
     </div>
   </div>
+
 
   <!-- contact -->
   <section class="contact layout-contact">

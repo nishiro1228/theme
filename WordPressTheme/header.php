@@ -8,7 +8,7 @@
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body>
   <!-- header -->
   <header class="header layout-header js-header">
     <div class="header__inner">

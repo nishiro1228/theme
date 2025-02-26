@@ -1,5 +1,19 @@
 <?php get_header(); ?>
 
+<?php 
+$top = esc_url( home_url( '/top/' ) );
+$campaign = esc_url( home_url( '/campaign/' ) );
+$about = esc_url( home_url( '/about/' ) );
+$information = esc_url( home_url( '/information/' ) );
+$blog = esc_url( home_url( '/blog/' ) );
+$voice = esc_url( home_url( '/voice/' ) );
+$price = esc_url( home_url( '/price/' ) );
+$faq = esc_url( home_url( '/faq/' ) );
+$contact = esc_url( home_url( '/contact/' ) );
+$privacy_policy = esc_url( home_url( '/privacy_policy/' ) );
+$terms_of_service = esc_url( home_url( '/terms_of_service/' ) );
+?>
+
 <main>
   <!-- mv -->
   <div class="mv">
@@ -10,42 +24,34 @@
       </div>
       <div class="mv__slider js-mv-swiper swiper">
         <div class="swiper-wrapper">
+          <?php 
+        // 画像フィールドを取得
+        $images = [
+          get_field('slider_image_1'),
+          get_field('slider_image_2'),
+          get_field('slider_image_3'),
+          get_field('slider_image_4')
+        ];
+        
+        // 画像が設定されている場合のみスライダーを生成
+        foreach ($images as $image): 
+          if ($image): // 画像がセットされているかチェック
+            $pc_image = $image['url']; // PC用画像
+            $sp_image = $image['sizes']['medium_large']; // SP用画像（適切なサイズを選択）
+            $alt_text = $image['alt'] ?: "スライダー画像"; // alt属性（空の場合のデフォルト）
+        ?>
           <div class="swiper-slide">
             <picture class="mv__img">
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-pc1.jpg"
-                media="(min-width: 769px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-sp1.jpg"
-                alt="スーツを着た男性が腕に付けている装飾品を見せるようにポーズを決めている様子">
+              <source srcset="<?php echo esc_url($pc_image); ?>" media="(min-width: 769px)" />
+              <img src="<?php echo esc_url($sp_image); ?>" alt="<?php echo esc_attr($alt_text); ?>">
             </picture>
           </div>
-          <div class="swiper-slide">
-            <picture class="mv__img">
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-pc2.jpg"
-                media="(min-width: 769px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-sp2.jpg"
-                alt="スーツを着た男性が腕に付けている時計を触ってポーズを決めている様子">
-            </picture>
-          </div>
-          <div class="swiper-slide">
-            <picture class="mv__img">
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-pc3.jpg"
-                media="(min-width: 769px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-sp3.jpg"
-                alt="スーツを着た男性が右手でジャケットを開けてポーズを決めている様子">
-            </picture>
-          </div>
-          <div class="swiper-slide">
-            <picture class="mv__img">
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-pc4.jpg"
-                media="(min-width: 769px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/mv-sp4.jpg"
-                alt="スーツを着た男性が右手でジャケットを開けてポーズを決めている様子">
-            </picture>
-          </div>
+          <?php endif; endforeach; ?>
         </div>
       </div>
     </div>
   </div>
+
 
   <!-- Campaign -->
   <section class="campaign layout-campaign">
@@ -235,7 +241,7 @@
         </div>
       </div>
       <div class="campaign__button">
-        <a href="campaign.html" class="commom-button">View more <span class="arrow"></span></a>
+        <a href="<?php echo $campaign; ?>" class="commom-button">View more <span class="arrow"></span></a>
       </div>
     </div>
   </section>
@@ -265,7 +271,7 @@
             <p class="about__text text">ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
               ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。</p>
             <div class="about__button">
-              <a href="about.html" class="commom-button">View more <span class="arrow"></span></a>
+              <a href="<?php echo $about; ?>" class="commom-button">View more <span class="arrow"></span></a>
             </div>
           </div>
         </div>
@@ -290,7 +296,7 @@
           <p class="information__text text">当店はダイビングライセンス（Cカード）世界最大の教育機関PADIの「正規店」として店舗登録されています。<br>
             正規登録店として、安心安全に初めての方でも安心安全にライセンス取得をサポート致します。</p>
           <div class="information__button">
-            <a href="information.html" class="commom-button">View more <span class="arrow"></span></a>
+            <a href="<?php echo $information; ?>" class="commom-button">View more <span class="arrow"></span></a>
           </div>
         </div>
       </div>
@@ -353,7 +359,7 @@
         </div>
       </div>
       <div class="blog__button">
-        <a href="blog.html" class="commom-button">View more<span class="arrow"></span></a>
+        <a href="<?php echo $blog; ?>" class="commom-button">View more<span class="arrow"></span></a>
       </div>
     </div>
   </section>
@@ -404,7 +410,7 @@
         </div>
       </div>
       <div class="voice__button">
-        <a href="voice.html" class="commom-button">View more <span class="arrow"></span></a>
+        <a href="<?php echo $voice; ?>" class="commom-button">View more <span class="arrow"></span></a>
       </div>
     </div>
   </section>
@@ -417,72 +423,74 @@
         <h2 class="section-title__sub">料金一覧</h2>
       </div>
       <div class="price__container">
+        <?php
+// 各料金表のグループ名とフィールドキー名の対応表
+$price_tables = [
+    'ライセンス講習' => [
+        'group' => 'price-table1',
+        'data_key' => 'price-data_license',
+        'fee_key' => 'price-fee_license',
+    ],
+    '体験ダイビング' => [
+        'group' => 'price-table2',
+        'data_key' => 'price-data_experience',
+        'fee_key' => 'price-fee_experience',
+    ],
+    'ファンダイビング' => [
+        'group' => 'price-table3',
+        'data_key' => 'price-data_fan',
+        'fee_key' => 'price-fee_fan',
+    ],
+    'スペシャルダイビング' => [
+        'group' => 'price-table4',
+        'data_key' => 'price-data_special',
+        'fee_key' => 'price-fee_special',
+    ],
+];
+
+// 現在の投稿IDを取得
+$post_id = get_the_ID();
+?>
+
         <ul class="price__list">
+          <?php foreach ($price_tables as $title => $info) : ?>
+          <?php
+        // SCFから該当のカスタムフィールドデータを取得
+        $prices = SCF::get($info['group'], $post_id);
+
+        // データが存在する場合のみ表示
+        if (!empty($prices) && is_array($prices)) :
+        ?>
           <li class="price__list-item">
-            <p class="price__item-title">ライセンス講習</p>
+            <p class="price__item-title"><?php echo esc_html($title); ?></p>
+            <?php foreach ($prices as $price) : ?>
+            <?php
+                    // 正しいキー名でデータを取得
+                    $item_text = !empty($price[$info['data_key']]) ? esc_html($price[$info['data_key']]) : '未設定';
+
+                    // 料金の数値変換を追加（カンマを除去し、floatに変換）
+                    $item_fee = !empty($price[$info['fee_key']]) 
+                        ? '¥' . number_format(floatval(str_replace(',', '', $price[$info['fee_key']]))) 
+                        : '¥0';
+                    ?>
             <div class="price__item-wrap">
-              <p class="price__item-text">オープンウォーターダイバーコース</p>
-              <div class="price__item-fee">¥50,000</div>
+              <p class="price__item-text"><?php echo $item_text; ?></p>
+              <div class="price__item-fee"><?php echo $item_fee; ?></div>
             </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">アドバンスドオープンウォーターコース</p>
-              <div class="price__item-fee">¥60,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">レスキュー＋EFRコース</p>
-              <div class="price__item-fee">¥70,000</div>
-            </div>
+            <?php endforeach; ?>
           </li>
+          <?php else : ?>
           <li class="price__list-item">
-            <p class="price__item-title">体験ダイビング</p>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ビーチ体験ダイビング(半日)</p>
-              <div class="price__item-fee">¥7,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ビーチ体験ダイビング(1日)</p>
-              <div class="price__item-fee">¥14,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ボート体験ダイビング(半日)</p>
-              <div class="price__item-fee">¥10,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ボート体験ダイビング(1日)</p>
-              <div class="price__item-fee">¥18,000</div>
-            </div>
+            <p class="price__item-title"><?php echo esc_html($title); ?></p>
+            <p class="price__item-text">料金情報は現在登録されていません。</p>
           </li>
-          <li class="price__list-item">
-            <p class="price__item-title">ファンダイビング</p>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ビーチダイビング(2ダイブ)</p>
-              <div class="price__item-fee">¥14,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ボートダイビング(2ダイブ)</p>
-              <div class="price__item-fee">¥18,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">スペシャルダイビング(2ダイブ)</p>
-              <div class="price__item-fee">¥24,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">ナイトダイビング(1ダイブ)</p>
-              <div class="price__item-fee">¥10,000</div>
-            </div>
-          </li>
-          <li class="price__list-item">
-            <p class="price__item-title">スペシャルダイビング</p>
-            <div class="price__item-wrap">
-              <p class="price__item-text">貸切ダイビング(2ダイブ)</p>
-              <div class="price__item-fee">¥24,000</div>
-            </div>
-            <div class="price__item-wrap">
-              <p class="price__item-text">1日ダイビング(3ダイブ)</p>
-              <div class="price__item-fee">¥32,000</div>
-            </div>
-          </li>
+          <?php endif; ?>
+          <?php endforeach; ?>
         </ul>
+
+
+
+
         <div class="price__colorbox colorbox">
           <picture class="price__container-img">
             <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/Price1.jpg"
@@ -492,7 +500,7 @@
         </div>
       </div>
       <div class="price__button">
-        <a href="price.html" class="commom-button">View more <span class="arrow"></span></a>
+        <a href="<?php echo $price; ?>" class="commom-button">View more <span class="arrow"></span></a>
       </div>
     </div>
   </section>
@@ -503,7 +511,7 @@
       <div class="contact__container">
         <div class="contact__left">
           <div class="contact__logo">
-            <a href="">
+            <a href="<?php echo $top; ?>">
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/contact-logo.svg" alt="CodeUps"
                 width="" height="" loading="lazy" decoding="async">
             </a>
@@ -531,7 +539,7 @@
           </div>
           <div class="contact__right-text">ご予約・お問い合わせはコチラ</div>
           <div class="contact__button">
-            <a href="contact.html" class="commom-button">View more <span class="arrow"></span></a>
+            <a href="<?php echo $contact; ?>" class="commom-button">View more <span class="arrow"></span></a>
           </div>
         </div>
       </div>

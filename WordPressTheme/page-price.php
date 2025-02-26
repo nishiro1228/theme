@@ -16,85 +16,69 @@
   <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb') ?>
 
+  <?php 
+  $top = esc_url( home_url( '/top/' ) );
+  $contact = esc_url( home_url( '/contact/' ) );
+   ?>
 
   <!-- sub-price -->
-  <!-- PC用テーブル -->
   <div class="sub-price layout-sub-price">
     <div class="sub-price__inner">
+
+      <?php
+    // グループ名一覧を設定
+    $price_tables = [
+        'ライセンス講習' => [
+            'group_name' => 'price-table1',
+            'data_key' => 'price-data_license',
+            'fee_key' => 'price-fee_license',
+        ],
+        '体験ダイビング' => [
+            'group_name' => 'price-table2',
+            'data_key' => 'price-data_experience',
+            'fee_key' => 'price-fee_experience',
+        ],
+        'ファンダイビング' => [
+            'group_name' => 'price-table3',
+            'data_key' => 'price-data_fan',
+            'fee_key' => 'price-fee_fan',
+        ],
+        'スペシャルダイビング' => [
+            'group_name' => 'price-table4',
+            'data_key' => 'price-data_special',
+            'fee_key' => 'price-fee_special',
+        ],
+    ];
+
+    // テーブルループ開始
+    foreach ($price_tables as $title => $keys) :
+        // SCFのデータ取得
+        $price_data = SCF::get($keys['group_name']);
+
+        // データが空の場合はスキップ
+        if (empty($price_data)) continue;
+    ?>
+
+      <!-- PC用テーブル -->
       <table class="sub-price__list sub-price-list is-sp" border="1">
         <tr>
-          <td rowspan="3" class="sub-price-list__head">
-            <p class="sub-price-list__title">ライセンス講習</p>
+          <td rowspan="<?php echo count($price_data); ?>" class="sub-price-list__head">
+            <p class="sub-price-list__title"><?php echo esc_html($title); ?></p>
           </td>
-          <td class="sub-price-list__data">オープンウォーターダイバーコース</td>
-          <td class="sub-price-list__fee">¥50,000</td>
+          <?php
+        // データループ
+        foreach ($price_data as $index => $data) :
+          $price_content = isset($data[$keys['data_key']]) ? esc_html($data[$keys['data_key']]) : 'データがありません';
+          $price_fee_raw = isset($data[$keys['fee_key']]) ? $data[$keys['fee_key']] : '0';
+          $price_fee_cleaned = (int) preg_replace('/[^\d]/', '', $price_fee_raw); // 数値以外を削除
+          $price_fee = number_format($price_fee_cleaned);
+        ?>
+          <?php if ($index > 0) : ?>
         </tr>
-        <tr>
-          <td class="sub-price-list__data">アドバンスドオープンウォーターコース</td>
-          <td class="sub-price-list__fee">¥60,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">レスキュー＋EFRコース</td>
-          <td class="sub-price-list__fee">¥70,000</td>
-        </tr>
-      </table>
-      <table class="sub-price__list sub-price-list is-sp" border="1">
-        <tr>
-          <td rowspan="4" class="sub-price-list__head">
-            <p class="sub-price-list__title">体験ダイビング</p>
-          </td>
-          <td class="sub-price-list__data">ビーチ体験ダイビング(半日)</td>
-          <td class="sub-price-list__fee">¥7,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">ビーチ体験ダイビング(1日)</td>
-          <td class="sub-price-list__fee">¥14,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">ボート体験ダイビング(半日)</td>
-          <td class="sub-price-list__fee">¥10,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">ボート体験ダイビング(1日)</td>
-          <td class="sub-price-list__fee">¥18,000</td>
-        </tr>
-      </table>
-      <table class="sub-price__list sub-price-list is-sp" border="1">
-        <tr>
-          <td rowspan="4" class="sub-price-list__head">
-            <p class="sub-price-list__title">ファンダイビング</p>
-          </td>
-          <td class="sub-price-list__data">ビーチダイビング(2ダイブ)</td>
-          <td class="sub-price-list__fee">¥14,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">ボートダイビング(2ダイブ)</td>
-          <td class="sub-price-list__fee">¥18,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">スペシャルダイビング(2ダイブ)</td>
-          <td class="sub-price-list__fee">¥24,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">ナイトダイビング(1ダイブ)</td>
-          <td class="sub-price-list__fee">¥10,000</td>
-        </tr>
-      </table>
-      <table class="sub-price__list sub-price-list is-sp" border="1">
-        <tr>
-          <td rowspan="3" class="sub-price-list__head">
-            <p class="sub-price-list__title">スペシャルダイビング</p>
-          </td>
-          <td class="sub-price-list__data">貸切ダイビング(2ダイブ)</td>
-          <td class="sub-price-list__fee">¥24,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">1日ダイビング(3ダイブ)</td>
-          <td class="sub-price-list__fee">¥32,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list__data">ナイトダイビング(2ダイブ)</td>
-          <td class="sub-price-list__fee">¥14,000</td>
+        <tr><?php endif; // 2行目以降 ?>
+          <td class="sub-price-list__data"><?php echo $price_content; ?></td>
+          <td class="sub-price-list__fee">¥<?php echo $price_fee; ?></td>
+          <?php endforeach; ?>
         </tr>
       </table>
 
@@ -102,100 +86,25 @@
       <table class="sub-price__list-sp sub-price-list-sp is-pc" border="1">
         <tr>
           <td colspan="2" class="sub-price-list-sp__head">
-            <p class="sub-price-list-sp__title">ライセンス講習</p>
+            <p class="sub-price-list-sp__title"><?php echo esc_html($title); ?></p>
           </td>
         </tr>
+        <?php 
+      foreach ($price_data as $data) : 
+        $price_content = isset($data[$keys['data_key']]) ? esc_html($data[$keys['data_key']]) : 'データがありません';
+        $price_fee_raw = isset($data[$keys['fee_key']]) ? $data[$keys['fee_key']] : '0';
+        $price_fee_cleaned = (int) preg_replace('/[^\d]/', '', $price_fee_raw); // 数値以外を削除
+        $price_fee = number_format($price_fee_cleaned);
+      ?>
         <tr>
-          <td class="sub-price-list-sp__date">オープンウォーター<br>
-            ダイバーコース</td>
-          <td class="sub-price-list-sp__fee">¥50,000</td>
+          <td class="sub-price-list-sp__date"><?php echo $price_content; ?></td>
+          <td class="sub-price-list-sp__fee">¥<?php echo $price_fee; ?></td>
         </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">アドバンスド<br>
-            オープンウォーターコース</td>
-          <td class="sub-price-list-sp__fee">¥60,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">レスキュー＋EFRコース</td>
-          <td class="sub-price-list-sp__fee">¥70,000</td>
-        </tr>
+        <?php endforeach; ?>
       </table>
-      <table class="sub-price__list-sp sub-price-list-sp is-pc" border="1">
-        <tr>
-          <td colspan="2" class="sub-price-list-sp__head">
-            <p class="sub-price-list-sp__title">体験ダイビング</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ビーチ体験ダイビング<br>(半日)
-          </td>
-          <td class="sub-price-list-sp__fee">¥7,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ビーチ体験ダイビング<br>(1日)
-          </td>
-          <td class="sub-price-list-sp__fee">¥14,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ボート体験ダイビング<br>(半日)
-          </td>
-          <td class="sub-price-list-sp__fee">¥10,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ボート体験ダイビング<br>(1日)
-          </td>
-          <td class="sub-price-list-sp__fee">¥18,000</td>
-        </tr>
-      </table>
-      <table class="sub-price__list-sp sub-price-list-sp is-pc" border="1">
-        <tr>
-          <td colspan="2" class="sub-price-list-sp__head">
-            <p class="sub-price-list-sp__title">ファンダイビング</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ビーチダイビング<br>(2ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥14,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ボートダイビング<br>(2ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥18,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">スペシャルダイビング<br>(2ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥24,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ナイトダイビング<br>(1ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥10,000</td>
-        </tr>
-      </table>
-      <table class="sub-price__list-sp sub-price-list-sp is-pc" border="1">
-        <tr>
-          <td colspan="2" class="sub-price-list-sp__head">
-            <p class="sub-price-list-sp__title">スペシャルダイビング</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">貸切ダイビング<br>(2ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥24,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">1日ダイビング<br>(3ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥32,000</td>
-        </tr>
-        <tr>
-          <td class="sub-price-list-sp__date">ナイトダイビング<br>(2ダイブ)
-          </td>
-          <td class="sub-price-list-sp__fee">¥14,000</td>
-        </tr>
-      </table>
+
+      <?php endforeach; ?>
+
     </div>
   </div>
 
@@ -206,7 +115,7 @@
       <div class="contact__container">
         <div class="contact__left">
           <div class="contact__logo">
-            <a href="">
+            <a href="<?php echo $top; ?>">
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/contact-logo.svg" alt="CodeUps"
                 width="" height="" loading="lazy" decoding="async">
             </a>
@@ -234,7 +143,7 @@
           </div>
           <div class="contact__right-text">ご予約・お問い合わせはコチラ</div>
           <div class="contact__button">
-            <a href="contact.html" class="commom-button">View more <span class="arrow"></span></a>
+            <a href="<?php echo $contact; ?>" class="commom-button">View more <span class="arrow"></span></a>
           </div>
         </div>
       </div>

@@ -35,6 +35,16 @@
   }
 }
 
+/* Safari のみに適用 */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .tab__menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
 .tab__menu-item:hover {
   color: $white;
   background-color: $green;

@@ -1,20 +1,36 @@
 @use "global" as *;
 
 .commom-button {
-  display: inline-flex;
+  display: inline-block;
   font-size: rem(14);
   font-family: $english-font-family;
   font-weight: $regular;
-  padding: rem(16) rem(88) rem(16) rem(40);
   border: 1px solid transparent;
   border-radius: 0;
   background: $green;
   color: $white;
   position: relative;
   z-index: 1;
+  padding: 1rem 6.5rem 1rem 3.2rem;
+}
+
+.commom-button.commom-button--contact {
+  display: block;
+  padding: 0;
 }
 
 .commom-button::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  border: 1px solid $green;
+  top: rem(1.8);
+  left: rem(4);
+  right: rem(-5.6);
+  bottom: rem(-6.2);
+  z-index: -10;
+}
+.commom-button--contact::before {
   content: "";
   position: absolute;
   display: inline-block;
@@ -39,20 +55,94 @@
   transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
   z-index: -1;
 }
+.commom-button--contact::after {
+  background: $white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+  z-index: -1;
+}
 
 .commom-button:hover {
   color: $green;
   background: $green;
 }
+.commom-button--contact:hover {
+  color: $green;
+  background: $green;
+}
+
 .commom-button:hover::after {
   transform: scale(1, 1);
 }
+.commom-button--contact:hover::after {
+  transform: scale(1, 1);
+}
 
-.arrow::after {
-  background-image: url(https://raw.githubusercontent.com/nishiro1228/CodeUps-/0cfcef5a8b42bb890f780e2d40d729fcf6a0ee6f/src/images/common/Vector%204button-arrow.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 20px;
+.commom-button__arrow::before {
+	content: '';
+	position: absolute;
+	top: calc(50% + -3.9px);
+	right: 4.4em;
+	transform: translateY(calc(-50% - -1px)) rotate(45deg);
+	width: rem(8.6);
+	height: 1px;
+	background: $white;
+}
+
+.commom-button__arrow::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 4.5em;
+	transform: translateY(-50%);
+	width: rem(37);
+	height: 1px;
+	background-color: $white;
+}
+.commom-button__arrow:hover::before,
+.commom-button__arrow:hover:after {
+  background: $green;
+}
+
+.commom-button--send:hover .commom-button__arrow::after,
+.commom-button--send:hover .commom-button__arrow:before {
+  background: $green;
+}
+
+.commom-button.commom-button--send {
+  max-width: rem(217.942);
+  width: 100%;
+}
+
+.arrow.arrow--send::before {
+	right: 4em;
+}
+
+.arrow.arrow--send::after {
+	right: 4em;
+}
+
+.commom-button.commom-button--invert {
+  color: $green;
+  background-color: $white;
+}
+
+.commom-button.commom-button--invert::before {
+  border: 1px solid $white;
+}
+
+.arrow.arrow--invert::before {
+	background: $green
+}
+.arrow.arrow--invert::after {
+	background-color: $green;
 }
 
 .arrow::before {
@@ -83,34 +173,4 @@
 a:hover span::after,
 a:hover span::before {
   background: $green;
-}
-
-.commom-button.commom-button--send {
-  max-width: rem(202);
-  width: 100%;
-  padding: rem(16) rem(88) rem(16) rem(51.2);
-}
-
-.arrow.arrow--send::before {
-	right: 4em;
-}
-
-.arrow.arrow--send::after {
-	right: 4em;
-}
-
-.commom-button.commom-button--invert {
-  color: $green;
-  background-color: $white;
-}
-
-.commom-button.commom-button--invert::before {
-  border: 1px solid $white;
-}
-
-.arrow.arrow--invert::before {
-	background: $green
-}
-.arrow.arrow--invert::after {
-	background-color: $green;
 }

@@ -1,14 +1,15 @@
 <?php get_header(); ?>
 <main>
+
   <!-- sub-mv -->
   <section class="sub-mv">
     <div class="sub-mv__inner">
-      <h1 class="sub-mv__title sub-section-title">FAQ</h1>
+      <h1 class="sub-mv__title sub-section-title">Terms-of-Service</h1>
       <picture class="sub-mv__img">
-        <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/faq-mv.webp"
+        <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/sitemap-mv.webp"
           media="(min-width: 769px)">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/faq-mv-sp.webp" alt="青空の下に綺麗な海と白い砂浜"
-          loading="lazy" decoding="async">
+        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sitemap-mv-sp.webp"
+          alt="サンゴ礁の近くを無数の魚が泳いでいる様子" loading="lazy" decoding="async">
       </picture>
     </div>
   </section>
@@ -16,46 +17,23 @@
   <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb') ?>
 
-  <?php 
-  $top = esc_url( home_url( '/top/' ) );
-  $contact = esc_url( home_url( '/contact/' ) );
-   ?>
-
-  <!-- faq -->
-  <?php if ( have_posts() ) : ?>
-  <div class="accordion layout-accordion">
-    <div class="accordion__inner">
-      <?php
-        // SCFで登録された「faq」グループを取得
-        $faqs = SCF::get('faq');
-
-        // FAQがある場合のみループで表示
-        if (!empty($faqs)) :
-          // 最大10件まで表示
-          $count = 0;
-          foreach ($faqs as $faq) :
-            if ($count >= 10) break; // 10件で終了
-      ?>
-      <div class="accordion__wrap">
-        <!-- 質問内容 -->
-        <div class="accordion__header active-faq">
-          <span><?php echo esc_html($faq['faq_q']); // 質問内容をエスケープして出力 ?></span>
-        </div>
-        <!-- 質問の答え -->
-        <div class="accordion__content" style="display: none;">
-          <span><?php echo nl2br(esc_html($faq['faq_a'])); // 質問の答えをエスケープして改行対応 ?></span>
+  <!-- 利用規約 -->
+  <div class="terms-of-service layout-terms-of-service">
+    <div class="terms-of-service__inner">
+      <div class="terms-of-service__title">利用規約</div>
+      <div class="terms-of-service__items">
+        <div class="terms-of-service__item">
+          <div class="terms-of-service__text">
+            <?php
+              while (have_posts()) : the_post();
+                the_content(); // 固定ページの本文を取得
+              endwhile;
+            ?>
+          </div>
         </div>
       </div>
-      <?php
-            $count++; // 表示済み件数をカウント
-          endforeach;
-        else :
-      ?>
-      <p>FAQがまだ登録されていません。</p>
-      <?php endif; ?>
     </div>
   </div>
-  <?php endif; ?>
 
   <!-- contact -->
   <section class="contact layout-contact">
@@ -63,7 +41,7 @@
       <div class="contact__container">
         <div class="contact__left">
           <div class="contact__logo">
-            <a href="<?php echo $top; ?>">
+            <a href="">
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/contact-logo.svg" alt="CodeUps"
                 width="" height="" loading="lazy" decoding="async">
             </a>
@@ -91,7 +69,7 @@
           </div>
           <div class="contact__right-text">ご予約・お問い合わせはコチラ</div>
           <div class="contact__button">
-            <a href="<?php echo $contact; ?>" class="commom-button">View more <span class="arrow"></span></a>
+            <a href="contact.html" class="commom-button">View more <span class="arrow"></span></a>
           </div>
         </div>
       </div>

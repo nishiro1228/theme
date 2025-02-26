@@ -16,6 +16,11 @@
   <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb') ?>
 
+  <?php 
+  $top = esc_url( home_url( '/top/' ) );
+  $contact = esc_url( home_url( '/contact/' ) );
+   ?>
+
   <!-- information-tab -->
   <div class="information-tab layout-information-tab">
     <div class="information-tab__inner inner">
@@ -38,8 +43,8 @@
                 </p>
               </div>
               <div class="information-tab__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sub-information1.webp" alt=""
-                  width="" height="" loading="lazy" decoding="async">
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sub-information1.webp" alt="
+                  澄んだ海を泳ぐダイバー" width="" height="" loading="lazy" decoding="async">
               </div>
             </div>
           </li>
@@ -52,8 +57,8 @@
                 </p>
               </div>
               <div class="information-tab__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.webp" alt="" width=""
-                  height="" loading="lazy" decoding="async">
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.webp" alt="無数の魚が泳いでいる様子"
+                  width="" height="" loading="lazy" decoding="async">
               </div>
             </div>
           </li>
@@ -66,8 +71,8 @@
                 </p>
               </div>
               <div class="information-tab__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.webp" alt="" width=""
-                  height="" loading="lazy" decoding="async">
+                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.webp" alt="青い二匹の魚が泳いでいる様子"
+                  width="" height="" loading="lazy" decoding="async">
               </div>
             </div>
           </li>
@@ -76,17 +81,13 @@
     </div>
   </div>
 
-
-
-
-
   <!-- contact -->
   <section class="contact layout-contact">
     <div class="contact__inner inner">
       <div class="contact__container">
         <div class="contact__left">
           <div class="contact__logo">
-            <a href="">
+            <a href="<?php echo $top; ?>">
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/contact-logo.svg" alt="CodeUps"
                 width="" height="" loading="lazy" decoding="async">
             </a>
@@ -114,7 +115,7 @@
           </div>
           <div class="contact__right-text">ご予約・お問い合わせはコチラ</div>
           <div class="contact__button">
-            <a href="contact.html" class="commom-button">View more <span class="arrow"></span></a>
+            <a href="<?php echo $contact; ?>" class="commom-button">View more <span class="arrow"></span></a>
           </div>
         </div>
       </div>

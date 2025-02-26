@@ -210,3 +210,52 @@ function display_voice_tabs() {
         echo '</div>';
     }
 }
+
+add_action( 'init', function() {
+    load_theme_textdomain( 'smart-custom-fields', get_template_directory() . '/languages' );
+} );
+
+add_action( 'after_setup_theme', function() {
+    load_theme_textdomain( 'your-theme-textdomain', get_template_directory() . '/languages' );
+} );
+
+// Contact Form 7で自動挿入されるPタグ、brタグを削除
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false() {
+  return false;
+}
+
+function custom_post_type_reviews() {
+    register_post_type('reviews',
+        array(
+            'labels' => array(
+                'name'          => '口コミ',
+                'singular_name' => '口コミ',
+                'add_new'       => '新規追加',
+                'add_new_item'  => '口コミを追加',
+                'edit_item'     => '口コミを編集',
+                'new_item'      => '新しい口コミ',
+                'view_item'     => '口コミを見る',
+                'search_items'  => '口コミを検索',
+                'not_found'     => '口コミが見つかりません',
+                'not_found_in_trash' => 'ゴミ箱に口コミがありません'
+            ),
+            'public'       => true,
+            'has_archive'  => true,
+            'menu_position'=> 5,
+            'menu_icon'    => 'dashicons-testimonial',
+            'supports'     => array('title', 'editor', 'thumbnail'),
+        )
+    );
+}
+add_action('init', 'custom_post_type_reviews');
+
+function remove_image_sizes_attr( $attr ) {
+    if ( isset( $attr['sizes'] ) && $attr['sizes'] === 'auto' ) {
+        unset( $attr['sizes'] );
+    }
+    return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'remove_image_sizes_attr' );
+
+add_filter('wp_img_tag_add_auto_sizes', '__return_false');

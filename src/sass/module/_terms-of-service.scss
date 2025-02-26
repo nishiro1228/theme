@@ -1,10 +1,10 @@
 @use "global" as *;
 
-.privacy-policy {
+.terms-of-service {
   position: relative;
 }
 
-.privacy-policy::before {
+.terms-of-service::before {
   background-image: url(../images/common/voice3.1.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@
   }
 }
 
-.privacy-policy__inner {
+.terms-of-service__inner {
   max-width: rem(600);
   width: 100%;
   margin-inline: auto;
@@ -39,7 +39,7 @@
   }
 }
 
-.privacy-policy__title {
+.terms-of-service__title {
   font-size: rem(24);
   font-weight: $medium;
   font-family: $base-font-family;
@@ -49,43 +49,32 @@
   }
 }
 
-.privacy-policy__items {
+.terms-of-service__items {
   margin-top: rem(40);
   line-height: calc( 32/ 16);
   font-size: rem(16);
 }
 
-.privacy-policy__item {
+.terms-of-service__item {
 
 }
 
-.privacy-policy__item + .privacy-policy__item {
+.terms-of-service__item + .terms-of-service__item {
   margin-top: rem(32);
 }
 
-.privacy-policy__text {
-  text-indent: rem(-13.2);
-}
-
-.privacy-policy__numbers {
+.terms-of-service__numbers {
 
 }
 
-.privacy-policy__number {
+.terms-of-service__number {
   text-indent: rem(-8.2);
 }
 
-.privacy-policy__title.privacy-policy__title--no-indent {
+.terms-of-service__title.terms-of-service__title--no-indent {
   text-indent: initial;
 }
 
-.privacy-policy__text.privacy-policy__text--no-indent {
+.terms-of-service__text.terms-of-service__text--no-indent {
   text-indent: initial;
-}
-
-// wp
-.wp-block-list {
-  padding-left: 1em;
-  text-indent: -1em;
-  list-style-position: inside;
 }

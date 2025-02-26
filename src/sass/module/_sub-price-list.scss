@@ -7,7 +7,7 @@
   border: none;
 }
 
-.sub-price__list + .sub-price__list {
+.sub-price__list:not(:first-child) {
   margin-top: 0;
 
   @include mq(md) {

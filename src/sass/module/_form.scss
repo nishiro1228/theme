@@ -69,3 +69,19 @@
   margin-top: rem(60);
   text-align: center;
 }
+
+// wpカスタマイズ
+.wpcf7-spinner {
+  display: none;
+}
+
+input.wpcf7-form-control.wpcf7-submit.has-spinner {
+  color: $white;
+  padding: rem(16) rem(104) rem(16) rem(51.2);
+  line-height: 1.876;
+  width: 100%;
+}
+
+.commom-button--send:hover input.wpcf7-form-control.wpcf7-submit.has-spinner {
+  color: $green;
+}

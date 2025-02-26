@@ -6,6 +6,10 @@
   font-weight: $regular;
 }
 
+.breadcrumb.breadcrumb--404 {
+  color: $white;
+}
+
 .breadcrumb__inner {}
 
 .breadcrumb__item {}

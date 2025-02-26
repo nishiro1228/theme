@@ -7,7 +7,7 @@
   border-collapse: collapse;
 }
 
-.sub-price__list-sp + .sub-price__list-sp {
+.sub-price__list-sp:not(:first-child) {
   margin-top: rem(38.4);
 }
 

@@ -19,20 +19,24 @@
   }
 }
 
-.form-select::before {
+.form__select {
+  position: relative;
+}
+
+.form__select::before {
   width: 12px;
   height: 12px;
   background-color: $green;
   clip-path: polygon(50% 12px, 0% 0%, 12px 0%);
   content: "";
   right: calc(50% - min(44vw, 17.4rem));
-  top: rem(595.6);
+  top: 1rem;
   position: absolute;
   z-index: -1;
 
   @include mq(md) {
-    right: calc(50% - min(44vw, 21.4rem));
-    top: rem(530);
+    right: calc(50% - min(44vw, 14.4rem));
+    top: 0.7rem;
   }
 }
 

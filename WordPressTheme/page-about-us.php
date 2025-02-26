@@ -16,6 +16,11 @@
   <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb') ?>
 
+  <?php 
+  $top = esc_url( home_url( '/top/' ) );
+  $contact = esc_url( home_url( '/contact/' ) );
+   ?>
+
   <!-- about -->
   <section class="sub-about sub-layout-about">
     <div class="sub-about__inner inner">
@@ -77,14 +82,13 @@
     </div>
   </div>
 
-
   <!-- contact -->
   <section class="contact layout-contact">
     <div class="contact__inner inner">
       <div class="contact__container">
         <div class="contact__left">
           <div class="contact__logo">
-            <a href="">
+            <a href="<?php echo $top; ?>">
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/contact-logo.svg" alt="CodeUps"
                 width="" height="" loading="lazy" decoding="async">
             </a>
@@ -112,7 +116,7 @@
           </div>
           <div class="contact__right-text">ご予約・お問い合わせはコチラ</div>
           <div class="contact__button">
-            <a href="contact.html" class="commom-button">View more <span class="arrow"></span></a>
+            <a href="<?php echo $contact; ?>" class="commom-button">View more <span class="arrow"></span></a>
           </div>
         </div>
       </div>

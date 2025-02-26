@@ -5,6 +5,12 @@
   flex-direction: column;
 }
 
+// wpカスタマイズ
+.wpcf7-list-item {
+  display: block;
+  margin: rem(3) 0 0 0;
+}
+
 .form-checkbox label {
   display: block;
   @include mq(md){

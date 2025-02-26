@@ -1,9 +1,5 @@
 @use "global" as *;
 
-.swiper {
-  padding-bottom: rem(10);
-}
-
 .swiper-slide {
   height: initial;
   display: flex;
@@ -47,10 +43,6 @@
 
 .swiper-fade .swiper-slide-active  {
   height: inherit;
-}
-
-.swiper-horizontal {
-  padding-bottom: rem(10);
 }
 
 .swiper-button-prev.js-campaign-arrow {

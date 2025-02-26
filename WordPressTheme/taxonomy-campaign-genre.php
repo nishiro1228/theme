@@ -85,7 +85,9 @@ $tab_categories = get_terms(array(
 
 
 
-
+  <?php 
+  $contact = esc_url( home_url( '/contact/' ) );
+   ?>
 
   <!-- Campaign -->
   <section class="sub-campaign layout-sub-campaign">
@@ -132,7 +134,7 @@ $tab_categories = get_terms(array(
                     <div class="card__contact is-sp">ご予約・お問い合わせはコチラ</div>
                   </div>
                   <div class="campaign__button campaign__button--card is-sp">
-                    <a href="contact.html" class="commom-button">View more<span class="arrow"></span></a>
+                    <a href="<?php echo $contact; ?>" class="commom-button">View more<span class="arrow"></span></a>
                   </div>
                 </div>
               </div>

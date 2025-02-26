@@ -67,11 +67,9 @@
 }
 
 .voice-card__wrap-img {
-  max-width: rem(151);
   margin-left: rem(13);
 
   @include mq(md) {
-    max-width: rem(180);
     margin-left: rem(16);
   }
 }
